@@ -18,7 +18,12 @@
 			com.mysql.jdbc.Driver
 		</property>
 		<property name="myeclipse.connection.profile">mysql7</property>
+		<property name="format_sql">true</property>
+		<property name="show_sql">true</property>
 		<mapping resource="com/weikun/po/Myuser.hbm.xml" />
+		<mapping resource="com/weikun/po/Fkr.hbm.xml" />
+		<mapping resource="com/weikun/po/Wife.hbm.xml" />
+		<mapping resource="com/weikun/po/Hus.hbm.xml" />
 
 	</session-factory>
 
