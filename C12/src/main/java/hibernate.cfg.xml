@@ -24,6 +24,10 @@
 		<mapping resource="com/weikun/po/Fkr.hbm.xml" />
 		<mapping resource="com/weikun/po/Wife.hbm.xml" />
 		<mapping resource="com/weikun/po/Hus.hbm.xml" />
+		<mapping resource="com/weikun/po/Parent.hbm.xml" />
+		<mapping resource="com/weikun/po/Sons.hbm.xml" />
+		<mapping resource="com/weikun/po/Stu.hbm.xml" />
+		<mapping resource="com/weikun/po/Tea.hbm.xml" />
 
 	</session-factory>
 
