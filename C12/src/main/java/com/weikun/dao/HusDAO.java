@@ -30,6 +30,7 @@ public class HusDAO {
 			
 			for(Hus h :list){
 				System.out.println(h.getHname()+"--"+h.getWife().getWname());
+				
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
