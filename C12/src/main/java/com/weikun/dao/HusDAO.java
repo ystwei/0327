@@ -21,16 +21,12 @@ public class HusDAO {
 		Session session=HibernateSessionFactory.getSession();
 		
 		
-		try {
+		try {			
 			
-			
-			Query q=session.createQuery("from Hus as h order by id desc");
-			
-			List<Hus> list=q.list();
-			
+			Query q=session.createQuery("from Hus as h order by id desc");			
+			List<Hus> list=q.list();			
 			for(Hus h :list){
-				System.out.println(h.getHname()+"--"+h.getWife().getWname());
-				
+				System.out.println(h.getHname()+"--"+h.getWife().getWname());				
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
