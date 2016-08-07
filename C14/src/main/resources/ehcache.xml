@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!--Default Cache configuration. These will applied to caches programmatically created through
+        the CacheManager.
+
+        The following attributes are required:
+		 缓存最大数目
+        maxElementsInMemory            - sets the maximum number of objects that will be created in memory
+                      缓存是否持久
+        eternal                        - Sets whether elements are eternal. If eternal,  timeouts are ignored and the
+                                         element is never expired.
+                       是否保存到磁盘，当系统当机时
+        overflowToDisk                 - Sets whether elements can overflow to disk when the in-memory cache
+                                         has reached the maxInMemory limit.
+
+        The following attributes are optional:
+                      当缓存闲置n秒后销毁
+        timeToIdleSeconds              - Sets the time to idle for an element before it expires.
+                                         i.e. The maximum amount of time between accesses before an element expires
+                                         Is only used if the element is not eternal.
+                                         Optional attribute. A value of 0 means that an Element can idle for infinity.
+                                         The default value is 0.
+                     当缓存存活n秒后销毁
+        timeToLiveSeconds              - Sets the time to live for an element before it expires.
+                                         i.e. The maximum time between creation time and when an element expires.
+                                         Is only used if the element is not eternal.
+                                         Optional attribute. A value of 0 means that and Element can live for infinity.
+                                         The default value is 0.
+                     指定缓存是否被持久化到硬盘中，保存路径由<diskStore>标签指定。         
+        diskPersistent                 - Whether the disk store persists between restarts of the Virtual Machine.
+                                         The default value is false.
+        diskExpiryThreadIntervalSeconds- The number of seconds between runs of the disk expiry thread. The default value
+                                         is 120 seconds.
+        -->
+<ehcache>  
+    <defaultCache maxElementsInMemory="1000" 
+    eternal="false" timeToIdleSeconds="3600" 
+    timeToLiveSeconds="3600"  
+        overflowToDisk="false">  
+    </defaultCache>  
+    <cache name="org.hibernate.cache.internal.StandardQueryCache" 
+    maxElementsInMemory="5" eternal="false" timeToLiveSeconds="120">  
+    </cache>  
+    <cache name="org.hibernate.cache.spi.UpdateTimestampsCache"
+     maxElementsInMemory="5000" eternal="true">  
+    </cache>  
+</ehcache>  
