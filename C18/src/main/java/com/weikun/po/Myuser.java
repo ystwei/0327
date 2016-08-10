@@ -10,7 +10,8 @@ import javax.persistence.Table;
 /**
  * Myuser entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "myuser", catalog = "test")
 public class Myuser implements java.io.Serializable {
 
 	// Fields
@@ -32,7 +33,9 @@ public class Myuser implements java.io.Serializable {
 	}
 
 	// Property accessors
-	
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
 	}
@@ -41,7 +44,7 @@ public class Myuser implements java.io.Serializable {
 		this.id = id;
 	}
 
-	
+	@Column(name = "username", nullable = false, length = 10)
 	public String getUsername() {
 		return this.username;
 	}
@@ -50,7 +53,7 @@ public class Myuser implements java.io.Serializable {
 		this.username = username;
 	}
 
-	
+	@Column(name = "pwd", nullable = false, length = 10)
 	public String getPwd() {
 		return this.pwd;
 	}
