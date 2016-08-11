@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 body {
 	padding: 20px;
+	
 }
 </style>
 </head>
