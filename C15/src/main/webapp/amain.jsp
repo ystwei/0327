@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<h1><c:if test="${param.id==null}">增加-</c:if>    	
     	<c:if test="${param.id!=null}">修改-</c:if>主窗体</h1>
     	
-    	<form action="user!add" method="post">
+    	<form action="user1!add" method="post">
     		用户名：<input type="text" name="user.username" value="${user.username}"/>
     		密码：<input type="text" name="user.pwd" value="${user.pwd}"/>
     		<input type="hidden" value="${requestScope.id}" name="user.id">

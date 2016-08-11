@@ -22,7 +22,7 @@ body {
 <body>
 
 
-	<h2>MyUser表<a href="user!amain">添加用户</a></h2>
+	<h2>MyUser表<a href="user1!amain">添加用户</a></h2>
 	<table class="table table-striped table-bordered">
 		<tr>
 			<th>序号</th>
@@ -43,8 +43,8 @@ body {
 			${m.pwd}
 			</td>
 			<td>
-				<a href="user!amain?id=${m.id}">修改</a>
-				<a href="user!del?id=${m.id}">删除</a>
+				<a href="user1!amain?id=${m.id}">修改</a>
+				<a href="user1!del?id=${m.id}">删除</a>
 			</td>
 		
 		</tr>

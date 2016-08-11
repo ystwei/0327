@@ -13,20 +13,25 @@ import org.apache.struts2.convention.annotation.Results;
 
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+
 import com.weikun.po.Myuser;
 import com.weikun.service.IUserService;
 import com.weikun.service.UserServiceImpl;
 
 
-@ParentPackage(value="struts-default")
-@Namespace(value="/")
-@Action
-@Results({
-	
-	@Result(name="show",location="/show.jsp"),
-	@Result(name="amain",location="/amain.jsp")
-	
-})
+//@ParentPackage(value="struts-default")
+//@Namespace(value="/")
+//@Controller
+//@Action(value="user1")
+//@Results({
+//	
+//	@Result(name="show",location="/show.jsp"),
+//	@Result(name="amain",location="/amain.jsp")
+//	
+//})
 public class UserAction {
 	private Myuser user;
 	
@@ -45,7 +50,15 @@ public class UserAction {
 	public void setId(String id) {
 		this.id = id;
 	}
-	private IUserService service=new UserServiceImpl();
+	private IUserService service;
+	
+	public IUserService getService() {
+		return service;
+	}
+	
+	public void setService(IUserService service) {
+		this.service = service;
+	}
 	private List<Myuser> list;
 	public List<Myuser> getList() {
 		return list;

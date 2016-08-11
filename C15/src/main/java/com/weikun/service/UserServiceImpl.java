@@ -2,14 +2,26 @@ package com.weikun.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.weikun.dao.IUserDAO;
 import com.weikun.dao.UserDAOImpl;
 import com.weikun.po.Myuser;
 
+
 public class UserServiceImpl implements IUserService {
 	
-	private IUserDAO dao=new UserDAOImpl(); 
+	private IUserDAO dao;
 	
+	
+	public IUserDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(IUserDAO dao) {
+		this.dao = dao;
+	}
+
 	@Override
 	public List<Myuser> queryAll() {
 		// TODO Auto-generated method stub

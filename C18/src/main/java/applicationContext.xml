@@ -42,7 +42,8 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		<property name="annotatedClasses">
 			<list>
 				<value>com.weikun.po.Myuser</value></list>
-		</property></bean>
+		</property>
+	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />

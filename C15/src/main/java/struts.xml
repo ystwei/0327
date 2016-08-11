@@ -3,5 +3,12 @@
 <struts>	
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 	
+ 	<package name="default" extends="struts-default"> 
+ 		<action name="user1" class="uaction"> 
+			<result name="show">/show.jsp</result> 
+			<result name="amain">/amain.jsp</result> 
+		
+ 		</action> 
 	
+	</package> 
 </struts>    

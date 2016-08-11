@@ -24,7 +24,7 @@ body {
 	
 
 	<%
-		response.sendRedirect("user!show");
+		response.sendRedirect("user1!show");
 	
 	%>
 

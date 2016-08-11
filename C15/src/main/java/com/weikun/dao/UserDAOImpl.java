@@ -4,12 +4,21 @@ import java.util.List;
 
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.weikun.po.HibernateSessionFactory;
 import com.weikun.po.Myuser;
 
 public class UserDAOImpl implements IUserDAO {
+	private SessionFactory sessionFactory;
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public List<Myuser> queryAll() {
@@ -17,7 +26,8 @@ public class UserDAOImpl implements IUserDAO {
 		Session session=null;
 		List<Myuser> list=null;
 		try {
-			session=HibernateSessionFactory.getSession();
+			//session=HibernateSessionFactory.getSession();
+			session=this.sessionFactory.openSession();
 
 			list=session.createQuery("from Myuser as m order by m.id desc").setCacheable(true).list();
 
@@ -25,7 +35,9 @@ public class UserDAOImpl implements IUserDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		}finally{
-			HibernateSessionFactory.closeSession();
+			session.flush();
+			session.clear();
+			session.close();
 
 
 		}
@@ -40,7 +52,7 @@ public class UserDAOImpl implements IUserDAO {
 		Transaction trans=null;
 		boolean flag=false;
 		try {
-			session=HibernateSessionFactory.getSession();
+			session=this.sessionFactory.openSession();
 			trans=session.beginTransaction();
 
 			Myuser user=(Myuser)session.load(Myuser.class, id);
@@ -54,7 +66,9 @@ public class UserDAOImpl implements IUserDAO {
 			e.printStackTrace();
 		}finally{
 
-			HibernateSessionFactory.closeSession();
+			session.flush();
+			session.clear();
+			session.close();
 		}
 
 
@@ -69,7 +83,7 @@ public class UserDAOImpl implements IUserDAO {
 		Transaction trans=null;
 		boolean flag=false;
 		try {
-			session=HibernateSessionFactory.getSession();
+			session=this.sessionFactory.openSession();
 			trans=session.beginTransaction();
 
 
@@ -83,7 +97,9 @@ public class UserDAOImpl implements IUserDAO {
 			e.printStackTrace();
 		}finally{
 
-			HibernateSessionFactory.closeSession();
+			session.flush();
+			session.clear();
+			session.close();
 		}
 		return flag;
 	}
@@ -95,8 +111,7 @@ public class UserDAOImpl implements IUserDAO {
 		Session session=null;
 		Myuser user=null;
 		try {
-			session=HibernateSessionFactory.getSession();
-
+			session=this.sessionFactory.openSession();
 			user=(Myuser)session.load(Myuser.class, id);
 			if(!Hibernate.isInitialized(user)){
 				Hibernate.initialize(user);
@@ -106,7 +121,9 @@ public class UserDAOImpl implements IUserDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		}finally{
-			HibernateSessionFactory.closeSession();
+			session.flush();
+			session.clear();
+			session.close();
 
 
 		}
