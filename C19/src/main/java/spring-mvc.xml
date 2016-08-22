@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"	
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+">
+
+	 <!-- HandlerMapping -->
+<!--     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/> -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <!-- HandlerAdapter:处理类中的核心方法的 -->
+<!--     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/> -->
+     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <!--线程安全的访问session-->
+        <property name="synchronizeOnSession" value="true"/>
+    </bean> 
+    <!-- ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+<!--     <bean name="/hello" class="com.weikun.controller.HelloController"></bean> -->    
+     <bean class="com.weikun.controller.HelloController"></bean>
+     <bean class="com.weikun.controller.ParamController"></bean>     
+     <bean class="com.weikun.controller.MyController"></bean>
+     
+     
+     
+     
+</beans>
