@@ -17,6 +17,7 @@ public class HelloController {
 	public ModelAndView add(){
 		ModelAndView mv=new ModelAndView();
 		
+		
 		mv.setViewName("success");
 		mv.addObject("h1", "MIKE");
 		System.out.print("ok");	
