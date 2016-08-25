@@ -17,5 +17,12 @@ public class User implements Serializable{
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	public User(){}
+	public User(String username, String pwd) {
+		super();
+		this.username = username;
+		this.pwd = pwd;
+	}
+	
 	
 }
