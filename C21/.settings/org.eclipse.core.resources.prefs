@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/webapp/template/foot.ftl=GBK
+encoding//src/main/webapp/template/hello.ftl=GBK
+encoding//src/main/webapp/template/if.ftl=GBK
+encoding//src/main/webapp/template/import.ftl=GBK
+encoding//src/main/webapp/template/list.ftl=GBK
+encoding//src/main/webapp/template/macro.ftl=GBK
+encoding//src/main/webapp/template/noparse.ftl=GBK
+encoding//src/main/webapp/template/switch.ftl=GBK
+encoding/<project>=UTF-8
