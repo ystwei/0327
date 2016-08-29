@@ -1,0 +1,16 @@
+DELIMITER //
+
+create procedure p_1(
+ in in_id  varchar(10),
+ out out_name   varchar(10)
+)
+
+begin
+	
+	
+	
+	select hname into out_name
+	from hus
+	where hid=in_id;
+end //
+DELIMITER ;

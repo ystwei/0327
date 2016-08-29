@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.weikun.dao.HusMapper" >
+  <resultMap id="BaseResultMap" type="com.weikun.model.Hus" >
+    <id column="hid" property="hid" jdbcType="INTEGER" />
+   
+    
+    <result column="hname" property="hname" jdbcType="VARCHAR" />
+    
+    <association property="wife" column="hid" select="queryWifeByhus">
+    
+    </association>
+    
+  </resultMap>
+  
+  <select id="queryWifeByhus" resultMap="com.weikun.dao.WifeMapper.BaseResultMap">
+  	select *
+  	from wife
+  	where hid=#{hid} 
+  
+  
+  </select>
+  <select id="selectForPro" statementType="CALLABLE" parameterType="Map">
+  	<![CDATA[  
+  		call p_1(
+  					#{in_id,mode=IN,jdbcType=VARCHAR}, 
+					#{out_name, mode=OUT, jdbcType=VARCHAR}
+  		
+  		)
+  	
+  	]]>
+  
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from hus  
+  </select>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    hid, hname
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weikun.model.HusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hus
+    where hid = #{hid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hus
+    where hid = #{hid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.weikun.model.HusExample" >
+    delete from hus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.weikun.model.Hus" >
+    insert into hus (hid, hname)
+    values (#{hid,jdbcType=INTEGER}, #{hname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weikun.model.Hus" >
+    insert into hus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        hid,
+      </if>
+      <if test="hname != null" >
+        hname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="hname != null" >
+        #{hname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.weikun.model.HusExample" resultType="java.lang.Integer" >
+    select count(*) from hus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hus
+    <set >
+      <if test="record.hid != null" >
+        hid = #{record.hid,jdbcType=INTEGER},
+      </if>
+      <if test="record.hname != null" >
+        hname = #{record.hname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hus
+    set hid = #{record.hid,jdbcType=INTEGER},
+      hname = #{record.hname,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.weikun.model.Hus" >
+    update hus
+    <set >
+      <if test="hname != null" >
+        hname = #{hname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hid = #{hid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.weikun.model.Hus" >
+    update hus
+    set hname = #{hname,jdbcType=VARCHAR}
+    where hid = #{hid,jdbcType=INTEGER}
+  </update>
+</mapper>
