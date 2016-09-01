@@ -5,7 +5,19 @@
     <id column="sid" property="sid" jdbcType="INTEGER" />
     <result column="fid" property="fid" jdbcType="INTEGER" />
     <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <association property="father" column="fid" select="queryFatherBySons">
+    
+    
+    </association>
   </resultMap>
+  <select id="queryFatherBySons" 
+  	resultMap="com.weikun.dao.FatherMapper.BaseResultMap" 	>
+    select *
+    from father
+    where fid = #{fid,jdbcType=INTEGER}
+  </select>
+  
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -81,12 +93,25 @@
       order by ${orderByClause}
     </if>
   </select>
+  
+   <select id="selectByPrimaryKeyBySons" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sons
+    where sid = #{sid,jdbcType=INTEGER}
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from sons
     where sid = #{sid,jdbcType=INTEGER}
   </select>
+  
+  <delete id="deleteByForeignKey" parameterType="java.lang.Integer" >
+    delete from sons
+    where fid = #{fid,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sons
     where sid = #{sid,jdbcType=INTEGER}
@@ -98,8 +123,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.weikun.model.Sons" >
-    insert into sons (sid, fid, sname
-      )
+  	
+  	<selectKey keyProperty="fid" resultType="int" order="BEFORE">
+         SELECT LAST_INSERT_ID()
+     </selectKey>
+  
+  	
+  	
+  
+    insert into sons (sid, fid, sname)
     values (#{sid,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{sname,jdbcType=VARCHAR}
       )
   </insert>

@@ -39,7 +39,20 @@
 		<mapper resource="com/weikun/mapping/HusMapper.xml" />
 		<mapper resource="com/weikun/mapping/WifeMapper.xml" />
 		
-
+		
+		<mapper resource="com/weikun/mapping/FatherMapper.xml" />
+		<mapper resource="com/weikun/mapping/SonsMapper.xml" />
+		
+		
+		<mapper resource="com/weikun/mapping/CompanyMapper.xml" />
+		<mapper resource="com/weikun/mapping/EmpMapper.xml" />
+		
+		
+		
+		<mapper resource="com/weikun/mapping/TeaMapper.xml" />
+		<mapper resource="com/weikun/mapping/TeastuMapper.xml" />
+		<mapper resource="com/weikun/mapping/StuMapper.xml" />
+		<mapper resource="com/weikun/mapping/StuMapper.xml" />
 	</mappers>
 
 

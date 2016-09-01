@@ -1,9 +1,20 @@
 package com.weikun.model;
 
+import java.util.List;
+
 public class Father {
     private Integer fid;
+    private List <Sons> slist;
+    
+    public List<Sons> getSlist() {
+		return slist;
+	}
 
-    private String fname;
+	public void setSlist(List<Sons> slist) {
+		this.slist = slist;
+	}
+
+	private String fname;
 
     public Integer getFid() {
         return fid;

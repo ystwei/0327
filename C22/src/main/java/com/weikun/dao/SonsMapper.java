@@ -11,7 +11,9 @@ public interface SonsMapper {
     int deleteByExample(SonsExample example);
 
     int deleteByPrimaryKey(Integer sid);
-
+    
+    int deleteByForeignKey(Integer fid);
+    
     int insert(Sons record);
 
     int insertSelective(Sons record);

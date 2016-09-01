@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.weikun.model.Emp" >
     <id column="eid" property="eid" jdbcType="INTEGER" />
     <id column="cid" property="cid" jdbcType="INTEGER" />
-    <result column="cname" property="cname" jdbcType="VARCHAR" />
+    <result column="ename" property="ename" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    eid, cid, cname
+    eid, cid, ename
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.weikun.model.EmpExample" >
     select
@@ -100,9 +100,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.weikun.model.Emp" >
-    insert into emp (eid, cid, cname
+    insert into emp (eid, cid, ename
       )
-    values (#{eid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}
+    values (#{eid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.weikun.model.Emp" >
@@ -114,8 +114,8 @@
       <if test="cid != null" >
         cid,
       </if>
-      <if test="cname != null" >
-        cname,
+      <if test="ename != null" >
+        ename,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -125,8 +125,8 @@
       <if test="cid != null" >
         #{cid,jdbcType=INTEGER},
       </if>
-      <if test="cname != null" >
-        #{cname,jdbcType=VARCHAR},
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -145,8 +145,8 @@
       <if test="record.cid != null" >
         cid = #{record.cid,jdbcType=INTEGER},
       </if>
-      <if test="record.cname != null" >
-        cname = #{record.cname,jdbcType=VARCHAR},
+      <if test="record.ename != null" >
+        ename = #{record.ename,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -157,7 +157,7 @@
     update emp
     set eid = #{record.eid,jdbcType=INTEGER},
       cid = #{record.cid,jdbcType=INTEGER},
-      cname = #{record.cname,jdbcType=VARCHAR}
+      ename = #{record.ename,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -165,8 +165,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.weikun.model.Emp" >
     update emp
     <set >
-      <if test="cname != null" >
-        cname = #{cname,jdbcType=VARCHAR},
+      <if test="ename != null" >
+        ename = #{ename,jdbcType=VARCHAR},
       </if>
     </set>
     where eid = #{eid,jdbcType=INTEGER}
@@ -174,7 +174,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.weikun.model.Emp" >
     update emp
-    set cname = #{cname,jdbcType=VARCHAR}
+    set ename = #{ename,jdbcType=VARCHAR}
     where eid = #{eid,jdbcType=INTEGER}
       and cid = #{cid,jdbcType=INTEGER}
   </update>

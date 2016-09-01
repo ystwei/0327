@@ -1,13 +1,13 @@
 package com.weikun.model;
 
 public class Emp extends EmpKey {
-    private String cname;
+    private String ename;
 
-    public String getCname() {
-        return cname;
+    public String getEname() {
+        return ename;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname == null ? null : cname.trim();
+    public void setCname(String ename) {
+        this.ename = ename == null ? null : ename.trim();
     }
 }

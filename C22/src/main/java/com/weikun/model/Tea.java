@@ -1,9 +1,20 @@
 package com.weikun.model;
 
+import java.util.List;
+
 public class Tea {
     private Integer tid;
+    private List<TeastuKey> slist;
+    
+    public List<TeastuKey> getSlist() {
+		return slist;
+	}
 
-    private String tname;
+	public void setSlist(List<TeastuKey> slist) {
+		this.slist = slist;
+	}
+
+	private String tname;
 
     public Integer getTid() {
         return tid;

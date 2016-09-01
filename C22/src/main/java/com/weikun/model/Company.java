@@ -1,9 +1,20 @@
 package com.weikun.model;
 
+import java.util.List;
+
 public class Company {
     private Integer cid;
+    private List<Emp> elist;
+    
+    public List<Emp> getElist() {
+		return elist;
+	}
 
-    private String cname;
+	public void setElist(List<Emp> elist) {
+		this.elist = elist;
+	}
+
+	private String cname;
 
     public Integer getCid() {
         return cid;

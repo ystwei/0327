@@ -2,8 +2,26 @@ package com.weikun.model;
 
 public class TeastuKey {
     private Integer tid;
+    private Stu stu;
+    private Tea tea;
+    
+    public Tea getTea() {
+		return tea;
+	}
 
-    private Integer sid;
+	public void setTea(Tea tea) {
+		this.tea = tea;
+	}
+
+	public Stu getStu() {
+		return stu;
+	}
+
+	public void setStu(Stu stu) {
+		this.stu = stu;
+	}
+
+	private Integer sid;
 
     public Integer getTid() {
         return tid;

@@ -4,6 +4,13 @@
   <resultMap id="BaseResultMap" type="com.weikun.model.Company" >
     <id column="cid" property="cid" jdbcType="INTEGER" />
     <result column="cname" property="cname" jdbcType="VARCHAR" />
+    
+    <collection property="elist" column="cid" javaType="ArrayList" 
+    ofType="com.weikun.model.Emp"
+    resultMap="com.weikun.dao.EmpMapper.BaseResultMap">
+    
+    
+    </collection>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,6 +87,15 @@
       order by ${orderByClause}
     </if>
   </select>
+  
+  <select id="selectAll" 
+  resultMap="BaseResultMap" >
+    select *     
+    from company c
+    inner join emp e on(c.cid=e.cid)
+    
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

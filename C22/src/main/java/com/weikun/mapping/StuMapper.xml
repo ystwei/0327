@@ -4,6 +4,13 @@
   <resultMap id="BaseResultMap" type="com.weikun.model.Stu" >
     <id column="sid" property="sid" jdbcType="INTEGER" />
     <result column="sname" property="sname" jdbcType="VARCHAR" />
+    
+    <collection property="klist" javaType="ArrayList" 
+    ofType="com.weikun.model.TeastuKey"
+    resultMap="com.weikun.dao.TeastuMapper.BaseResultMap">
+    
+    
+    </collection>
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -82,9 +89,10 @@
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
-    from stu
-    where sid = #{sid,jdbcType=INTEGER}
+    *
+    from stu s
+    inner join teastu ts on(s.sid=ts.sid)
+    where s.sid = #{sid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from stu

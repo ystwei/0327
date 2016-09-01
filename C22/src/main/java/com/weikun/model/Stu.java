@@ -1,9 +1,21 @@
 package com.weikun.model;
 
+import java.util.List;
+
 public class Stu {
     private Integer sid;
+    private List<TeastuKey> klist;    
+    
 
-    private String sname;
+	public List<TeastuKey> getKlist() {
+		return klist;
+	}
+
+	public void setKlist(List<TeastuKey> klist) {
+		this.klist = klist;
+	}
+
+	private String sname;
 
     public Integer getSid() {
         return sid;

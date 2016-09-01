@@ -2,8 +2,17 @@ package com.weikun.model;
 
 public class Sons {
     private Integer sid;
+    private Father father;
+    
+    public Father getFather() {
+		return father;
+	}
 
-    private Integer fid;
+	public void setFather(Father father) {
+		this.father = father;
+	}
+
+	private Integer fid;
 
     private String sname;
 

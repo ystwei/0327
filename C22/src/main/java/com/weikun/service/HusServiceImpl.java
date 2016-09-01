@@ -38,7 +38,7 @@ public class HusServiceImpl implements IHusService {
 		
 	}
 	public static void main(String[] args) {
-		new HusServiceImpl().selectForPro();
+		new HusServiceImpl().deleteByPrimaryKey(1);
 	}
 
 	@Override
@@ -48,13 +48,13 @@ public class HusServiceImpl implements IHusService {
 		
 		
 		Wife wife=new Wife();
-		wife.setHid(20);
+		wife.setHid(19);
 		
 		
 		ss.delete("com.weikun.dao.WifeMapper.deleteByPrimaryKey", wife);
 		
 		Hus hus=new Hus();
-		hus.setHid(20);
+		hus.setHid(19);
 		
 		
 		ss.delete("com.weikun.dao.HusMapper.deleteByPrimaryKey", hus);

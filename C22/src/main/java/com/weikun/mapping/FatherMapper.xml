@@ -4,6 +4,11 @@
   <resultMap id="BaseResultMap" type="com.weikun.model.Father" >
     <id column="fid" property="fid" jdbcType="INTEGER" />
     <result column="fname" property="fname" jdbcType="VARCHAR" />
+    <collection property="slist" javaType="ArrayList" column="fid"
+    ofType="com.weikun.model.Sons"
+    resultMap="com.weikun.dao.SonsMapper.BaseResultMap"></collection>
+    
+    
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -80,11 +85,17 @@
       order by ${orderByClause}
     </if>
   </select>
+  
+  
+ 
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
-    from father
-    where fid = #{fid,jdbcType=INTEGER}
+   	*
+    from father f
+    inner join sons s on(f.fid=s.fid)
+    where f.fid = #{fid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from father
@@ -97,6 +108,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.weikun.model.Father" >
+  
+  	
     insert into father (fid, fname)
     values (#{fid,jdbcType=INTEGER}, #{fname,jdbcType=VARCHAR})
   </insert>

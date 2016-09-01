@@ -4,7 +4,33 @@
   <resultMap id="BaseResultMap" type="com.weikun.model.TeastuKey" >
     <id column="tid" property="tid" jdbcType="INTEGER" />
     <id column="sid" property="sid" jdbcType="INTEGER" />
+    <association property="stu" column="sid" select="query1">
+    
+    
+    </association>
+  	
+  	
+  	
+  	<association property="tea" column="tid" select="query2">
+    
+    
+    </association>
   </resultMap>
+  
+  <select id="query1"  resultMap="com.weikun.dao.StuMapper.BaseResultMap">
+   	select * 
+   	from stu s
+   	where s.sid=#{sid}
+   	
+  </select>
+  
+  
+  <select id="query2"  resultMap="com.weikun.dao.TeaMapper.BaseResultMap">
+   	select * 
+   	from tea t
+   	where t.tid=#{tid}
+   	
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
