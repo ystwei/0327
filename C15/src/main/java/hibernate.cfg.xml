@@ -23,7 +23,7 @@
 		
 		<!-- 配置C3P0连接池属性 -->
 		<property name="hibernate.connection.provider_class">
-			org.hibernate.connection.C3P0ConnectionProvider
+			org.hibernate.c3p0.internal.C3P0ConnectionProvider
 		</property>
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.min_size">5</property>
@@ -37,9 +37,7 @@
 		<property name="hibernate.cache.region.factory_class">
 			org.hibernate.cache.ehcache.EhCacheRegionFactory
 		</property>
-		<property name="hibernate.cache.provider_class">
-			org.hibernate.cache.EhCacheProvider
-		</property>
+		
 		<!--        启用查询缓存,以缓存使用find(),list(),Iterator()等方法获得的查询结果集-->
 		<property name="hibernate.cache.use_query_cache">true</property>
 		<property
